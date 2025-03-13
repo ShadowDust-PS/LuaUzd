@@ -106,8 +106,8 @@ while true do
         end
 
     elseif choice == '6' then
-        print('Programa baigiama.')
-        break
+        WeatherAPI:getFW(FavoriteCities)
+
     elseif choice == '7' then
         print('Programa baigiama.')
         break
