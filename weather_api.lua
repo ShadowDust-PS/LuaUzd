@@ -1,5 +1,7 @@
+package.path = package.path .. ";C:/msys64/ucrt64/share/lua/5.1/?.lua"
+package.cpath = package.cpath .. ";C:/msys64/ucrt64/share/lua/5.1/socket/?.dll;C:/msys64/ucrt64/share/lua/5.1/socket/?.lua"
+local socket = require("socket.core")
 local http = require('socket.http')
-package.path = package.path .. ";C:/lua/share/lua/5.1/?.lua"
 local json = require("dkjson")
 local config = require('config')
 
