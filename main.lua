@@ -4,6 +4,7 @@ local FavoriteCities = require('fav_city')
 
 local api = WeatherAPI:new()
 local db = FavoriteCities:new()
+local city
 
 while true do
     print('\nPasirinkite veiksmą: ')

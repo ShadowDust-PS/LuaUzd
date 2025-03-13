@@ -1,5 +1,6 @@
-local http = require('http')
-local json = require('dkjson')
+local http = require('socket.http')
+package.path = package.path .. ";C:/lua/share/lua/5.1/?.lua"
+local json = require("dkjson")
 local config = require('config')
 
 local WeatherAPI = {}
