@@ -11,8 +11,8 @@ end
 
 function WeatherData:disp() --išrašoma informacija į ekraną
     print(string.format('Miestas: %s', self.city))
-    print(string.format('Temperatūra: %.1f°C', self.temp))
-    print(string.format('Orų sąlygos: %s', self.weather))
+    print(string.format('Temperatura: %.1f°C', self.temp))
+    print(string.format('Oru salygos: %s', self.weather))
 end
 
 return WeatherData

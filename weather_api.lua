@@ -12,7 +12,7 @@ WeatherAPI.__index = WeatherAPI
 function WeatherAPI:new() --patikrinimas ar egzistuoja API raktas
     local self = setmetatable({}, WeatherAPI)
     if not config.apikey or config.apikey == '' then
-        error('API Raktas neegzistuoja, Prašome nustatyti API raktą config.lua faile')
+        error('API Raktas neegzistuoja, Prasome nustatyti API rakta config.lua faile')
     end
     return self
 end
@@ -28,7 +28,7 @@ function WeatherAPI:getWBC(city)
 
     local res, status = http.request(url)
     if status ~= 200 then
-        error('Nepavyko gauti orų duomenų')
+        error('Nepavyko gauti oru duomenu')
     end
 
     return json.decode(res)

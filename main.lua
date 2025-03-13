@@ -9,7 +9,7 @@ local db = FavoriteCities:new()
 local city
 
 while true do
-    print('\nPasirinkite veiksmą: ')
+    print('\nPasirinkite veiksma: ')
     print('\n1. Gauti orus pagal miesta')
     print('\n2. Prideti miesta i megstamus')
     print('\n3. perziureti megstamus miestus')
