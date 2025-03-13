@@ -18,17 +18,47 @@ function FavoriteCities:new()
 end
 
 function FavoriteCities:addcity(city)
-    local stmt = self.db:prepare('INSERT INTO favorites (city) VALUES (?);')
-    stmt:bind_value(city)
-    stmt:step()
+    local stmt = self.db:prepare('SELECT COUNT(*) AS count FROM favorites WHERE city = ?;')
+    if not stmt then
+        print('Klaida: nepavyko paruosti SQL uzklausos (1)')      
+    end
+    stmt:bind_values(city)
+    local result = stmt:step()
+    local count = stmt:get_value(0)
     stmt:finalize()
-    print('Miestas pridėtas')
+
+    if count > 0 then
+        return false
+    else
+        local stmt = self.db:prepare('INSERT INTO favorites (city) VALUES (?);')
+        if not stmt then
+            print('Klaida: nepavyko paruosti SQL uzklausos (2)')      
+        end
+        stmt:bind_values(city)
+        local result = stmt:step()
+        stmt:finalize()
+        --print(result)
+        --print(type(result))
+        return true
+    end
+
+    
 end
 
 function FavoriteCities:getcities()
+    local cities = {}
     for row in self.db:nrows('SELECT city FROM favorites;') do
-        print(row.city)
+        table.insert(cities, row.city)
     end
+    return cities
+end
+
+function FavoriteCities:removecity(city)
+    local stmt = self.db:prepare('DELETE FROM favorites WHERE city = ?;')
+    stmt:bind_values(city)
+    local result = stmt:step()
+    stmt:finalize()
+    return result == sqlite3.done
 end
 
 
